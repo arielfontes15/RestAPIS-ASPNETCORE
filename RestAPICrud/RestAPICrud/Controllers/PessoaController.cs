@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestAPICrud.Controllers
 {
@@ -11,29 +7,50 @@ namespace RestAPICrud.Controllers
     [Route("[controller]")]
     public class PessoaController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<PessoaController> _logger;
-
         public PessoaController(ILogger<PessoaController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        //Endpoint utilizado para soma de dois numeros Calculadora/soma/{firstNumber} / {secondNumber}
+        [HttpGet("soma/{firstNumber}/{secondNumber}")]
+        public IActionResult CalculaSoma(string firstNumber, string secondNumber)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            //Validação feita para verificar se os numeros são numericos ou não.
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                //Conversão dos numeros de String para Decimal em seguida a soma dos dois numeros
+                var soma = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
+                //Retornando um Ok como sucesso a soma dos dois numeros como parametro
+                return Ok(soma.ToString());
+            }
+            //Caso os parametros digitados nao forem numeros ira retornar uma BadRequest
+            return BadRequest("Number Invalid");
+        }
+
+        private bool IsNumeric(string strNumber)
+        {
+            double number;
+            bool isNumber = double.TryParse(
+                strNumber,
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.NumberFormatInfo.InvariantInfo,
+                out number
+                );
+            return isNumber;
+        }
+
+        private decimal ConvertToDecimal(string strNumber)
+        {
+            decimal decimalValue;
+
+            if (decimal.TryParse(strNumber, out decimalValue))
+            {
+                return decimalValue;
+            }
+
+            return 0;
         }
     }
 }

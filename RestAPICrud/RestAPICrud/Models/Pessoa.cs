@@ -1,6 +1,6 @@
 ﻿namespace RestAPICrud.Models
 {
-    public class PessoaModel
+    public class Pessoa
     {
         public long Id { get; set; }
         public string Nome { get; set; }
