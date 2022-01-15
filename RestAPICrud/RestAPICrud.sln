@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAPICrud", "RestAPICrud\RestAPICrud.csproj", "{259A5CC8-9941-46EA-9258-FD4AF91C2A3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{259A5CC8-9941-46EA-9258-FD4AF91C2A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259A5CC8-9941-46EA-9258-FD4AF91C2A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259A5CC8-9941-46EA-9258-FD4AF91C2A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259A5CC8-9941-46EA-9258-FD4AF91C2A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6347AD89-4A68-4287-B0BB-D681D9EAB5DE}
+	EndGlobalSection
+EndGlobal
